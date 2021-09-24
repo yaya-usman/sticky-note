@@ -1,8 +1,10 @@
+import HeaderNav from "./components/HeaderNav";
+import "./App.css";
 
 function App() {
   return (
-    <div className="App">
-      <h1>Sticky note</h1>
+    <div className="app">
+      <HeaderNav />
     </div>
   );
 }

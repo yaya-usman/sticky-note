@@ -1,0 +1,25 @@
+.header__container {
+  width: 100vw;
+  height: 80px;
+  background-color: #ffff71;
+}
+
+.wrapper {
+  display: flex;
+  align-items: center;
+  padding: 12px;
+  margin-left: 8px;
+}
+
+.header__title h1 {
+    font-weight: 400;
+}
+
+.header__title p {
+    font-style: italic;
+}
+
+.header__logo {
+  margin-right: 15px;
+  margin-left: 10px;
+}
