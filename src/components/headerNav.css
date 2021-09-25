@@ -7,10 +7,14 @@
 .wrapper {
   display: flex;
   align-items: center;
-  padding: 12px;
+  justify-content: space-between;
+  padding: 8px 20px;
   margin-left: 8px;
 }
 
+.left{
+  display: flex;
+}
 .header__title h1 {
     font-weight: 400;
 }
@@ -20,6 +24,9 @@
 }
 
 .header__logo {
+  align-self: center;
+  height: 100%;
+  object-fit: cover;
   margin-right: 15px;
   margin-left: 10px;
 }
