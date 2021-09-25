@@ -22,7 +22,7 @@ function HeaderNav(props) {
           <Badge badgeContent={4} color="success">
             <NoteAltIcon color="action" fontSize="large" />
           </Badge>
-          {/* <div className="date_modified">{Date().now().toLocaleString}</div> */}
+          <p>hello world</p>
         </div>
       </div>
     </header>
