@@ -3,9 +3,8 @@ import React from 'react'
 function Note() {
     return (
         <form className = "note">
-            <textarea name="note" id="note" cols="30" rows="10"></textarea>
+            <textarea placeholder ="Create a new note...." ></textarea>
             <button>Add note</button>
-
         </form>
     )
 }
