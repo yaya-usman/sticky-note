@@ -1,0 +1,38 @@
+.note {
+  display: flex;
+  flex-direction: column;
+  width: 200px;
+  height: 200px;
+  margin-left: 20px;
+  margin-top: 20px;
+}
+
+.note textarea {
+  border: 1px solid;
+  outline: none;
+  border-radius: 5px;
+  height: 100%;
+  resize: none;
+  padding: 10px;
+}
+
+.note div {
+  align-self: center;
+  justify-self: center;
+  cursor: pointer;
+  margin-top: -12px;
+  width: 25px;
+  height: 25px;
+  border-radius: 50%;
+  background-color: white;
+  
+}
+
+.add-btn {
+    color: green;
+    transform: scale(2.2);
+    /* transition: all 1s ease; */
+}
+.add-btn:hover{
+    opacity: .8;
+}
