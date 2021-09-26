@@ -14,7 +14,7 @@ function HeaderNav({ timeCreated, noteCount }) {
           />
           <div className="header__title">
             <h1>Sticky Note</h1>
-            <p>Your one stop space for your notes...</p>
+            <p>Your one stop space for your short notes...</p>
           </div>
         </div>
         <div className="right">

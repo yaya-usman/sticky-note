@@ -1,4 +1,4 @@
-.note {
+.note-area {
   display: flex;
   flex-direction: column;
   width: 200px;
@@ -7,7 +7,7 @@
   margin-top: 20px;
 }
 
-.note textarea {
+.note-area textarea {
   border: 1px solid;
   outline: none;
   border-radius: 5px;
@@ -18,13 +18,13 @@
 
 
 
-.note label{
+.note-area label{
    align-self: center;
   justify-self: center;
 }
 
 
-.note label button {
+.note-area label button {
   cursor: pointer;
   margin-top: -12px;
   width: 25px;
@@ -39,8 +39,52 @@
 .add-btn {
   color: green;
   transform: scale(2.2);
-  /* transition: all 1s ease; */
 }
 .add-btn:hover {
   opacity: 0.8;
+}
+
+.note{
+  position: absolute;
+  cursor: pointer;
+  background-image: url('../assets/post-it-note.png');
+  width: 200px;
+  height: 200px;
+  background-size: cover;
+  top: 150px;
+  left: 300px;
+  padding: 30px;
+}
+
+.note pre{
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  white-space: pre-wrap;
+  padding: 8px;
+
+}
+
+/* scrollbar style */
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: #f1f1f1; 
+}
+ 
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #888; 
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #555; 
+}
+
+.note pre:hover{
+    overflow: scroll;
 }
