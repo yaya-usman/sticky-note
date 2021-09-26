@@ -10,7 +10,7 @@ function App() {
   });
 
   //passing this to the header component
-  const getHeaderData = ({ lastTimeCreated, totalNotes }) => {
+  const passHeaderData = ({ lastTimeCreated, totalNotes }) => {
     setHeaderData(() => {
       return {lastTimeCreated, totalNotes: totalNotes + 1 };
     });
@@ -22,7 +22,7 @@ function App() {
         timeCreated={headerData.lastTimeCreated}
         noteCount={headerData.totalNotes}
       />
-      <Note getHeaderData={getHeaderData} />
+      <Note passHeaderData={passHeaderData} />
     </div>
   );
 }

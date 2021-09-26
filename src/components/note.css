@@ -16,21 +16,25 @@
   padding: 10px;
 }
 
-.note label {
-  align-self: center;
+
+
+.note label{
+   align-self: center;
   justify-self: center;
+}
+
+
+.note label button {
   cursor: pointer;
   margin-top: -12px;
   width: 25px;
   height: 25px;
   border-radius: 50%;
   background-color: white;
-}
-
-.note label button {
   outline: none;
   border: none;
 }
+
 
 .add-btn {
   color: green;

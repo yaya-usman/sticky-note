@@ -20,7 +20,7 @@ function Note(props) {
 
     dispatch({ type: "ADD_NOTE", payload: { noteText: noteText } });
     setNoteText("");
-    props.getHeaderData(noteState);
+    props.passHeaderData(noteState);
   };
 
   return (
