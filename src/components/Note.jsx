@@ -1,34 +1,43 @@
-import React,{useRef,useEffect,useState} from 'react'
-import './note.css';
+import React, { useRef, useEffect, useState } from "react";
+import "./note.css";
 import AddCircleIcon from "@mui/icons-material/AddCircle";
-import {useNote} from '../useNote';
+import { useNote } from "../useNote";
 
-function Note() {
-    const focusRef = useRef();
-    const [noteText, setNoteText] = useState('');
-    const [noteState, dispatch] = useNote();
+function Note(props) {
+  const [noteState, dispatch] = useNote();
+  const [noteText, setNoteText] = useState("");
+  const focusRef = useRef();
 
-    //aiding in focusing the input field automatically
-    useEffect(() => {
-        focusRef.current.focus();
-    }, [])
+  //focus the input field automatically
+  useEffect(() => {
+    focusRef.current.focus();
+  }, []);
 
-    const addNote = ()=>{
+  const addNote = (e) => {
+    e.preventDefault();
+    // gaurd clause
+    if (!noteText) return;
 
-        // gaurd clause
-        if(!noteText) return;
+    dispatch({ type: "ADD_NOTE", payload: { noteText: noteText } });
+    setNoteText("");
+    props.getHeaderData(noteState);
+  };
 
-        dispatch({type: 'ADD_NOTE'})
-    }
-
-    return (
-      <form className="note">
-        <textarea value = {noteText} onChange = {(e) => setNoteText(e.target.value)} placeholder="Create a new note...." ref={focusRef}></textarea>
-        <div onSubmit={addNote}>
+  return (
+    <form className="note" onSubmit={addNote}>
+      <textarea
+        value={noteText}
+        onChange={(e) => setNoteText(e.target.value)}
+        placeholder="Create a new note...."
+        ref={focusRef}
+      ></textarea>
+      <label>
+        <button>
           <AddCircleIcon className="add-btn" />
-        </div>
-      </form>
-    );
+        </button>
+      </label>
+    </form>
+  );
 }
 
 export default Note;

@@ -30,3 +30,14 @@
   margin-right: 15px;
   margin-left: 10px;
 }
+
+
+.right{
+  display: flex;
+  flex-direction: column;
+  flex: .2;
+}
+
+.right p{
+      font-style: italic;
+}

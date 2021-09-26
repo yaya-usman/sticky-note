@@ -16,7 +16,7 @@
   padding: 10px;
 }
 
-.note div {
+.note label {
   align-self: center;
   justify-self: center;
   cursor: pointer;
@@ -25,14 +25,18 @@
   height: 25px;
   border-radius: 50%;
   background-color: white;
-  
+}
+
+.note label button {
+  outline: none;
+  border: none;
 }
 
 .add-btn {
-    color: green;
-    transform: scale(2.2);
-    /* transition: all 1s ease; */
+  color: green;
+  transform: scale(2.2);
+  /* transition: all 1s ease; */
 }
-.add-btn:hover{
-    opacity: .8;
+.add-btn:hover {
+  opacity: 0.8;
 }

@@ -2,7 +2,7 @@ import {useReducer} from 'react'
 
 
 const initialNoteState = {
-    timeCreated: null,
+    lastTimeCreated: null,
     totalNotes: 0,
     notes: []
 };
@@ -10,11 +10,19 @@ const initialNoteState = {
 const noteReducer = (prevState, action) => {
     switch(action.type){
         case 'ADD_NOTE':
-            return {
-                timeCreated: new Date().toTimeString().slice(0,8),
+            const newState =  {
+                lastTimeCreated: new Date().toTimeString().slice(0,8),
                 totalNotes: prevState.notes.length + 1,
-                notes: [...prevState, action.payload]
-            };
+                notes: [...prevState.notes, action.payload]
+            }
+
+            console.log(newState);
+            return newState;
+            // return {
+            //     timeCreated: new Date().toTimeString().slice(0,8),
+            //     totalNotes: prevState.notes.length + 1,
+            //     notes: [...prevState.notes, action.payload]
+            // };
         default:
             return prevState;
     }

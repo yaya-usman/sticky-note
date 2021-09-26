@@ -1,9 +1,8 @@
-import React from "react";
 import "./headerNav.css";
 import Badge from "@mui/material/Badge";
 import NoteAltIcon from "@mui/icons-material/NoteAlt";
 
-function HeaderNav(props) {
+function HeaderNav({ timeCreated, noteCount }) {
   return (
     <header className="header__container">
       <div className="wrapper">
@@ -19,10 +18,14 @@ function HeaderNav(props) {
           </div>
         </div>
         <div className="right">
-          <Badge badgeContent={4} color="success">
-            <NoteAltIcon color="action" fontSize="large" />
-          </Badge>
-          <p>hello world</p>
+          <div>
+            <Badge badgeContent={noteCount} color="success">
+              <NoteAltIcon color="action" fontSize="large" />
+            </Badge>
+          </div>
+          <p>
+            Last note added at: {noteCount > 1 && <strong>{timeCreated}</strong>}
+          </p>
         </div>
       </div>
     </header>
