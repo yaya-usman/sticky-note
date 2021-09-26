@@ -35,7 +35,7 @@
 .right{
   display: flex;
   flex-direction: column;
-  flex: .2;
+  flex: .25;
 }
 
 .right p{

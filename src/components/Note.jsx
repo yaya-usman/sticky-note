@@ -1,6 +1,7 @@
 import React, { useRef, useEffect, useState } from "react";
 import "./note.css";
 import AddCircleIcon from "@mui/icons-material/AddCircle";
+import CancelIcon from "@mui/icons-material/Cancel";
 import { useNote } from "../useNote";
 import { v4 as uuid } from "uuid";
 
@@ -31,6 +32,21 @@ function Note(props) {
     props.passHeaderData(noteState);
   };
 
+  // const delNote = (note) => {
+  //   dispatch({ type: "DEL_NOTE", payload: note });
+  //   // props.passHeaderData({
+  //   //   lastTimeCreated: noteState.lastTimeCreated,
+  //   //   totalNotes: noteState.totalNotes - 2,
+  //   // });
+  //   console.log(noteState);
+  // onClick={() => delNote(note)}
+  // };
+
+  const dropNote = (event) => {
+    event.target.style.left = `${event.pageX - 50}px`;
+    event.target.style.top = `${event.pageY - 50}px`;
+  };
+
   return (
     <>
       <form className="note-area" onSubmit={addNote}>
@@ -49,7 +65,16 @@ function Note(props) {
 
       {noteState.notes.map((note) => {
         return (
-          <div className="note">
+          <div
+            className="note"
+            style={{ transform: `rotate(${note.rotate}deg)` }}
+            key={note.id}
+            draggable="true"
+            onDragEnd={dropNote}
+          >
+            <div className="delete-note" >
+              <CancelIcon sx={{ color: "red" }} />
+            </div>
             <pre>{note.noteText}</pre>
           </div>
         );

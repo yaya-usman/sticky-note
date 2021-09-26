@@ -12,7 +12,7 @@ function App() {
   //passing this to the header component
   const passHeaderData = ({ lastTimeCreated, totalNotes }) => {
     setHeaderData(() => {
-      return {lastTimeCreated, totalNotes: totalNotes + 1 };
+      return {lastTimeCreated, totalNotes: totalNotes+1 };
     });
   };
 
