@@ -3,6 +3,7 @@ import Badge from "@mui/material/Badge";
 import NoteAltIcon from "@mui/icons-material/NoteAlt";
 
 function HeaderNav({ timeCreated, noteCount }) {
+
   return (
     <header className="header__container">
       <div className="wrapper">

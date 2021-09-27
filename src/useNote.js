@@ -10,7 +10,7 @@ const noteReducer = (prevState, action) => {
   switch (action.type) {
     case "ADD_NOTE":
       return {
-        timeCreated: new Date().toTimeString().slice(0, 8),
+        lastTimeCreated: new Date().toTimeString().slice(0, 8),
         totalNotes: prevState.notes.length + 1,
         notes: [...prevState.notes, action.payload],
       };

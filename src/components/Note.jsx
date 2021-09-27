@@ -1,9 +1,11 @@
-import React, { useRef, useEffect, useState } from "react";
+import React, { useRef, useEffect, useState} from "react";
 import "./note.css";
 import AddCircleIcon from "@mui/icons-material/AddCircle";
 import CancelIcon from "@mui/icons-material/Cancel";
 import { useNote } from "../useNote";
 import { v4 as uuid } from "uuid";
+
+
 
 function Note(props) {
   const [noteState, dispatch] = useNote();
@@ -15,6 +17,7 @@ function Note(props) {
     focusRef.current.focus();
   }, []);
 
+  //on click add the note
   const addNote = (e) => {
     e.preventDefault();
     // gaurd clause
@@ -32,15 +35,14 @@ function Note(props) {
     props.passHeaderData(noteState);
   };
 
-  // const delNote = (note) => {
-  //   dispatch({ type: "DEL_NOTE", payload: note });
-  //   // props.passHeaderData({
-  //   //   lastTimeCreated: noteState.lastTimeCreated,
-  //   //   totalNotes: noteState.totalNotes - 2,
-  //   // });
-  //   console.log(noteState);
-  // onClick={() => delNote(note)}
-  // };
+  //on click delete the note
+  const delNote = (note) => {
+    dispatch({ type: "DEL_NOTE", payload: note });
+    props.passHeaderData({
+      ...noteState,
+      totalNotes: noteState.totalNotes - 2,
+    });
+  };
 
   const dropNote = (event) => {
     event.target.style.left = `${event.pageX - 50}px`;
@@ -48,7 +50,7 @@ function Note(props) {
   };
 
   return (
-    <>
+    <React.Fragment>
       <form className="note-area" onSubmit={addNote}>
         <textarea
           value={noteText}
@@ -72,14 +74,14 @@ function Note(props) {
             draggable="true"
             onDragEnd={dropNote}
           >
-            <div className="delete-note" >
+            <div className="delete-note" onClick={() => delNote(note)}>
               <CancelIcon sx={{ color: "red" }} />
             </div>
             <pre>{note.noteText}</pre>
           </div>
         );
       })}
-    </>
+    </React.Fragment>
   );
 }
 

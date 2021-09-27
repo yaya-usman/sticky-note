@@ -4,6 +4,7 @@ import Note from "./components/Note";
 import "./App.css";
 
 function App() {
+
   const [headerData, setHeaderData] = useState({
     lastTimeCreated: null,
     totalNotes: 0,
@@ -14,6 +15,7 @@ function App() {
     setHeaderData(() => {
       return {lastTimeCreated, totalNotes: totalNotes+1 };
     });
+
   };
 
   return (
