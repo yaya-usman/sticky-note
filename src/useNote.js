@@ -26,8 +26,12 @@ const noteReducer = (prevState, action) => {
   }
 };
 
-export const useNote = () => {
-  const [noteState, dispatch] = useReducer(noteReducer, initialNoteState);
+export const useNote = (noteInit) => {
+  const [noteState, dispatch] = useReducer(
+    noteReducer,
+    initialNoteState,
+    noteInit
+  );
 
   return [noteState, dispatch];
 };

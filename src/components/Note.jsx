@@ -6,9 +6,13 @@ import { useNote } from "../useNote";
 import { v4 as uuid } from "uuid";
 
 
-
+//initializer for the reducer
+const noteInit = () => {
+  const note = localStorage.getItem("noteState");
+  return note && JSON.parse(note);
+};
 function Note(props) {
-  const [noteState, dispatch] = useNote();
+  const [noteState, dispatch] = useNote(noteInit);
   const [noteText, setNoteText] = useState("");
   const focusRef = useRef();
 
@@ -16,6 +20,10 @@ function Note(props) {
   useEffect(() => {
     focusRef.current.focus();
   }, []);
+
+  useEffect(() => {
+    localStorage.setItem('noteState',JSON.stringify(noteState));
+  },[noteState])
 
   //on click add the note
   const addNote = (e) => {
