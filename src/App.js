@@ -4,18 +4,14 @@ import Note from "./components/Note";
 import "./App.css";
 
 function App() {
-
-  const [headerData, setHeaderData] = useState({
-    lastTimeCreated: null,
-    totalNotes: 0,
-  });
+  const headNoteData = JSON.parse(localStorage.getItem("noteState"))
+  const [headerData, setHeaderData] = useState(headNoteData);
 
   //passing this to the header component
   const passHeaderData = ({ lastTimeCreated, totalNotes }) => {
     setHeaderData(() => {
-      return {lastTimeCreated, totalNotes: totalNotes+1 };
+      return {lastTimeCreated: headerData.lastTimeCreated, totalNotes: totalNotes + 1 };
     });
-
   };
 
   return (
