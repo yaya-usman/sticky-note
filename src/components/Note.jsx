@@ -6,15 +6,11 @@ import { useNote } from "../useNote";
 import { v4 as uuid } from "uuid";
 
 
-//initializer for the reducer
-const noteInit = () => {
-  const note = localStorage.getItem("noteState");
-  return note && JSON.parse(note);
-};
 function Note(props) {
-  const [noteState, dispatch] = useNote(noteInit);
+  const [noteState, dispatch] = useNote();
   const [noteText, setNoteText] = useState("");
   const focusRef = useRef();
+
 
   //focus the input field automatically
   useEffect(() => {

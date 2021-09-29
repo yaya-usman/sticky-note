@@ -1,70 +1,73 @@
-# Getting Started with Create React App
+# Sticky-Note Web App
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+**_Your one stop space for your sticky notes....._**
 
-## Available Scripts
+<hr />
 
-In the project directory, you can run:
+## Table of contents
 
-### `yarn start`
+- [Overview](#overview)
+  - [Description](#desc)
+  - [User-Stories](#user__story)
+  - [Preview](#preview)
+  - [Links](#links)
+- [My process](#my-process)
+  - [Built with](#built-with)
+  - [Continued development](#continued-development)
+- [Author](#author)
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+## Overview
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+### Description
 
-### `yarn test`
+This is a simple web app that enables users to take short notes and pin it on the webpage, it has mostly all the functionality a traditional sticky note for study has, for instance it is able to dragged and dropped anywhere across the user's viewport.
+Users should be able to:
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+### User Stories
 
-### `yarn build`
+The following user stories was fulfilled;
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+**Users should be able to:**
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+- See the size of the notes being adjusted based on their device's screen size
+- Drag and drop the notes across the viewport
+- To retain their data after page reload/refresh
+- To see the time the last note was created
+- To see the note count in real time
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+### Preview
 
-### `yarn eject`
+![](images/Screenshot-1.png)
+![](images/Screenshot-2.png)
+![](images/Screenshot-3.png)
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+### Links
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+- Live Site URL: [Live view](https://sticky-note.vercel.app/)
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+## My process
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+### Built with/Tech Used
 
-## Learn More
+- HTML5
+- CSS
+- React
+- LocalStorage
+- vercel
+- Desktop-first workflow
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+### Continued development
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+I might consider adding user authentication and a long term storage for deleted notes so as to eneable it to be restored after deletion
 
-### Code Splitting
+```js
+export const JustAnotherProject = () => {
+  return <>🎉</>;
+};
+```
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+## Author
 
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `yarn build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+- LinkedIn - [Let's connect](http://www.linkedin.com/in/yaya-usman-adaiza-430964192)
+- Twitter - [I follow back](https://twitter.com/ylincoln222)
+- Website - [check back in few months time :)]()
