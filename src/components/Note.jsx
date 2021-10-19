@@ -1,25 +1,24 @@
-import React, { useRef, useEffect, useState} from "react";
+import React, { useRef, useEffect, useState } from "react";
 import "./note.css";
 import AddCircleIcon from "@mui/icons-material/AddCircle";
 import CancelIcon from "@mui/icons-material/Cancel";
 import { useNote } from "../useNote";
 import { v4 as uuid } from "uuid";
-
+import firebase from "../firebase";
 
 function Note(props) {
   const [noteState, dispatch] = useNote();
   const [noteText, setNoteText] = useState("");
   const focusRef = useRef();
 
-
   //focus the input field automatically
   useEffect(() => {
     focusRef.current.focus();
   }, []);
 
-  useEffect(() => {
-    localStorage.setItem('noteState',JSON.stringify(noteState));
-  },[noteState])
+  // useEffect(() => {
+  //   localStorage.setItem("noteState", JSON.stringify(noteState));
+  // }, [noteState]);
 
   //on click add the note
   const addNote = (e) => {
@@ -35,6 +34,8 @@ function Note(props) {
         rotate: Math.floor(Math.random() * 20),
       },
     });
+    const db = firebase.database().ref("/UserNotesData");
+    db.push(noteState);
     setNoteText("");
     props.passHeaderData(noteState);
   };

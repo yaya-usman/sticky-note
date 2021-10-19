@@ -27,14 +27,7 @@ const noteReducer = (prevState, action) => {
 };
 
 export const useNote = () => {
-  const [noteState, dispatch] = useReducer(
-    noteReducer,
-    initialNoteState,
-    () => {
-      const note = localStorage.getItem("noteState");
-      return note && JSON.parse(note);
-    }
-  );
+  const [noteState, dispatch] = useReducer(noteReducer, initialNoteState);
 
   return [noteState, dispatch];
 };
