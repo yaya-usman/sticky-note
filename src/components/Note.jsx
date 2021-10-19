@@ -5,9 +5,12 @@ import CancelIcon from "@mui/icons-material/Cancel";
 import { useNote } from "../useNote";
 import { v4 as uuid } from "uuid";
 import firebase from "../firebase";
+import {fetchNoteAsync,addNoteAsync} from '../redux/features/noteSlice'
+import {useDispatch} from 'react-redux'
 
 function Note(props) {
-  const [noteState, dispatch] = useNote();
+  // const [noteState, dispatch] = useNote();
+  const dispatch = useDispatch()
   const [noteText, setNoteText] = useState("");
   const focusRef = useRef();
 
@@ -16,38 +19,33 @@ function Note(props) {
     focusRef.current.focus();
   }, []);
 
+
   // useEffect(() => {
-  //   localStorage.setItem("noteState", JSON.stringify(noteState));
-  // }, [noteState]);
+  //   dispatch(fetchNoteAsync)
+  // },[])
 
   //on click add the note
   const addNote = (e) => {
     e.preventDefault();
     // gaurd clause
     if (!noteText) return;
-
-    dispatch({
-      type: "ADD_NOTE",
-      payload: {
+    const payload = {
         noteText: noteText,
-        id: uuid(),
         rotate: Math.floor(Math.random() * 20),
-      },
-    });
-    const db = firebase.database().ref("/UserNotesData");
-    db.push(noteState);
+      }
+    dispatch(addNoteAsync(payload));
     setNoteText("");
-    props.passHeaderData(noteState);
+    // props.passHeaderData(noteState);
   };
 
   //on click delete the note
-  const delNote = (note) => {
-    dispatch({ type: "DEL_NOTE", payload: note });
-    props.passHeaderData({
-      ...noteState,
-      totalNotes: noteState.totalNotes - 2,
-    });
-  };
+  // const delNote = (note) => {
+  //   dispatch({ type: "DEL_NOTE", payload: note });
+  //   props.passHeaderData({
+  //     ...noteState,
+  //     totalNotes: noteState.totalNotes - 2,
+  //   });
+  // };
 
   const dropNote = (event) => {
     event.target.style.left = `${event.pageX - 50}px`;
@@ -70,7 +68,7 @@ function Note(props) {
         </label>
       </form>
 
-      {noteState.notes.map((note) => {
+      {/* {noteState.notes.map((note) => {
         return (
           <div
             className="note"
@@ -85,7 +83,7 @@ function Note(props) {
             <pre>{note.noteText}</pre>
           </div>
         );
-      })}
+      })} */}
     </React.Fragment>
   );
 }
