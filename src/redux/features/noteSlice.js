@@ -1,35 +1,55 @@
-import { collection, onSnapshot,addDoc,getDocs } from "@firebase/firestore";
+import {
+  collection,
+  addDoc,
+  getDocs,
+  deleteDoc,
+  doc,
+} from "@firebase/firestore";
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import db from "../../firebase/firebase";
-import { useState } from "react";
 
 export const addNoteAsync = createAsyncThunk(
   "notes/addNoteAsync",
   async (payload) => {
-      const collectionRef = collection(db, 'notes');
+    try {
+      const collectionRef = collection(db, "notes");
 
       const newNote = {
         lastTimeCreated: new Date().toTimeString().slice(0, 8),
-        totalNotes: onSnapshot(collectionRef, (snapshot) => snapshot.docs.length + 1),
         noteText: payload.noteText,
-        rotatePos: payload.rotate
+        rotate: payload.rotate,
       };
-      const doc = await addDoc(collectionRef, newNote)
-
-      return {...doc.data(), id: doc.id}
+      const doc = await addDoc(collectionRef, newNote);
+      return { ...newNote, id: doc.id };
+    } catch (error) {
+      alert(`Error adding docs :(`);
+    }
   }
 );
 
-export const fetchNoteAsync = createAsyncThunk("notes/fetchNote", () => {
-  const [notes, setNotes] = useState([]);
-  const collectionRef = collection(db, "notes");
-  onSnapshot(collectionRef, (snapshot) =>
-    snapshot.docs.map((doc) => setNotes({...doc.data(), id: doc.id}))
-  );
-  return { notes };
+export const fetchNoteAsync = createAsyncThunk("notes/fetchNote", async () => {
+  try {
+    const collectionRef = collection(db, "notes");
+    const snapshot = await getDocs(collectionRef);
+    const notes = snapshot.docs.map((doc) => ({ ...doc.data(), id: doc.id }));
+    return { notes };
+  } catch (error) {
+    alert(`Error Fetching docs :(`);
+  }
 });
 
-export const deleteNoteAsync = createAsyncThunk("notes/deleteNote", () => {});
+export const deleteNoteAsync = createAsyncThunk(
+  "notes/deleteNote",
+  async (payload) => {
+    try {
+      const docRef = doc(db, "notes", payload.id);
+      await deleteDoc(docRef);
+      return payload;
+    } catch (error) {
+      alert(`Unable to delete doc :(`);
+    }
+  }
+);
 
 const noteSlice = createSlice({
   name: "notes",
@@ -38,9 +58,12 @@ const noteSlice = createSlice({
 
   extraReducers: {
     [fetchNoteAsync.fulfilled]: (state, action) => action.payload.notes,
-    [addNoteAsync.fulfilled]: (state,action) =>{
-        state.push(action.payload)
-    }
+    [addNoteAsync.fulfilled]: (state, action) => {
+      state.push(action.payload);
+    },
+    [deleteNoteAsync.fulfilled]: (state, action) => {
+      return state.filter(note => note.id !== action.payload.id)
+    },
   },
 });
 

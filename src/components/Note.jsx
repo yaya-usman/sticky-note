@@ -2,15 +2,13 @@ import React, { useRef, useEffect, useState } from "react";
 import "./note.css";
 import AddCircleIcon from "@mui/icons-material/AddCircle";
 import CancelIcon from "@mui/icons-material/Cancel";
-import { useNote } from "../useNote";
-import { v4 as uuid } from "uuid";
-import firebase from "../firebase";
-import {fetchNoteAsync,addNoteAsync} from '../redux/features/noteSlice'
-import {useDispatch} from 'react-redux'
+import { addNoteAsync, deleteNoteAsync } from "../redux/features/noteSlice";
+import {useDispatch,useSelector} from 'react-redux'
 
-function Note(props) {
-  // const [noteState, dispatch] = useNote();
-  const dispatch = useDispatch()
+
+function Note() {
+  const dispatch = useDispatch();
+  const notes = useSelector((state) => state.notes);
   const [noteText, setNoteText] = useState("");
   const focusRef = useRef();
 
@@ -18,34 +16,26 @@ function Note(props) {
   useEffect(() => {
     focusRef.current.focus();
   }, []);
-
-
-  // useEffect(() => {
-  //   dispatch(fetchNoteAsync)
-  // },[])
+  
 
   //on click add the note
   const addNote = (e) => {
     e.preventDefault();
+
     // gaurd clause
     if (!noteText) return;
     const payload = {
-        noteText: noteText,
-        rotate: Math.floor(Math.random() * 20),
-      }
+      noteText: noteText,
+      rotate: Math.floor(Math.random() * 20),
+    };
     dispatch(addNoteAsync(payload));
     setNoteText("");
-    // props.passHeaderData(noteState);
   };
 
   //on click delete the note
-  // const delNote = (note) => {
-  //   dispatch({ type: "DEL_NOTE", payload: note });
-  //   props.passHeaderData({
-  //     ...noteState,
-  //     totalNotes: noteState.totalNotes - 2,
-  //   });
-  // };
+  const delNote = (note) => {
+    dispatch(deleteNoteAsync(note))
+  };
 
   const dropNote = (event) => {
     event.target.style.left = `${event.pageX - 50}px`;
@@ -68,7 +58,7 @@ function Note(props) {
         </label>
       </form>
 
-      {/* {noteState.notes.map((note) => {
+      {notes.map((note) => {
         return (
           <div
             className="note"
@@ -83,7 +73,7 @@ function Note(props) {
             <pre>{note.noteText}</pre>
           </div>
         );
-      })} */}
+      })}
     </React.Fragment>
   );
 }

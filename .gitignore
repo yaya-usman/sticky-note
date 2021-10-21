@@ -5,6 +5,7 @@
 /.pnp
 .pnp.js
 
+/useNote.js
 # testing
 /coverage
 

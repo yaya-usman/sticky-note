@@ -1,6 +1,7 @@
 import "./headerNav.css";
 import Badge from "@mui/material/Badge";
 import NoteAltIcon from "@mui/icons-material/NoteAlt";
+import {useSelector} from 'react-redux'
 
 function HeaderNav({ timeCreated, noteCount }) {
 
