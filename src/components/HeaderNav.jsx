@@ -3,7 +3,9 @@ import Badge from "@mui/material/Badge";
 import NoteAltIcon from "@mui/icons-material/NoteAlt";
 import {useSelector} from 'react-redux'
 
-function HeaderNav({ timeCreated, noteCount }) {
+function HeaderNav() {
+  const noteCount = useSelector(state => state.notes.length);
+  const lastTimeCreated = useSelector(state => state.notes[noteCount-2]?.timeCreated)
 
   return (
     <header className="header__container">
@@ -21,12 +23,12 @@ function HeaderNav({ timeCreated, noteCount }) {
         </div>
         <div className="right">
           <div>
-            <Badge badgeContent={noteCount} color="success">
+            <Badge badgeContent= {noteCount} color="success">
               <NoteAltIcon color="action" fontSize="large" />
             </Badge>
           </div>
           <p>
-            Last note added at: {noteCount > 1 && <strong>{timeCreated}</strong>}
+            Last note added at: {noteCount > 1 && <strong>{lastTimeCreated}</strong>}
           </p>
         </div>
       </div>

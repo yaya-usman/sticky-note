@@ -15,7 +15,7 @@ export const addNoteAsync = createAsyncThunk(
       const collectionRef = collection(db, "notes");
 
       const newNote = {
-        lastTimeCreated: new Date().toTimeString().slice(0, 8),
+        timeCreated: new Date().toTimeString().slice(0, 8),
         noteText: payload.noteText,
         rotate: payload.rotate,
       };
@@ -62,7 +62,7 @@ const noteSlice = createSlice({
       state.push(action.payload);
     },
     [deleteNoteAsync.fulfilled]: (state, action) => {
-      return state.filter(note => note.id !== action.payload.id)
+      return state.filter((note) => note.id !== action.payload.id);
     },
   },
 });
