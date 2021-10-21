@@ -18,6 +18,8 @@ export const addNoteAsync = createAsyncThunk(
         timeCreated: new Date().toTimeString().slice(0, 8),
         noteText: payload.noteText,
         rotate: payload.rotate,
+        top: payload.top,
+        left: payload.left
       };
       const doc = await addDoc(collectionRef, newNote);
       return { ...newNote, id: doc.id };

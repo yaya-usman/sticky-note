@@ -3,8 +3,7 @@ import "./note.css";
 import AddCircleIcon from "@mui/icons-material/AddCircle";
 import CancelIcon from "@mui/icons-material/Cancel";
 import { addNoteAsync, deleteNoteAsync } from "../redux/features/noteSlice";
-import {useDispatch,useSelector} from 'react-redux'
-
+import { useDispatch, useSelector } from "react-redux";
 
 function Note() {
   const dispatch = useDispatch();
@@ -16,7 +15,6 @@ function Note() {
   useEffect(() => {
     focusRef.current.focus();
   }, []);
-  
 
   //on click add the note
   const addNote = (e) => {
@@ -27,6 +25,8 @@ function Note() {
     const payload = {
       noteText: noteText,
       rotate: Math.floor(Math.random() * 20),
+      top: Math.floor(150 + Math.random() * 200),
+      left: Math.floor(300 + Math.random() * 150)
     };
     dispatch(addNoteAsync(payload));
     setNoteText("");
@@ -34,7 +34,7 @@ function Note() {
 
   //on click delete the note
   const delNote = (note) => {
-    dispatch(deleteNoteAsync(note))
+    dispatch(deleteNoteAsync(note));
   };
 
   const dropNote = (event) => {
@@ -62,7 +62,11 @@ function Note() {
         return (
           <div
             className="note"
-            style={{ transform: `rotate(${note.rotate}deg)` }}
+            style={{
+              transform: `rotate(${note.rotate}deg)`,
+              top: `${note.top}px`,
+              left: `${note.left}px`
+            }}
             key={note.id}
             draggable="true"
             onDragEnd={dropNote}
