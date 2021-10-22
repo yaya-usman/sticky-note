@@ -59,9 +59,12 @@ const noteSlice = createSlice({
   reducers: {},
 
   extraReducers: {
+    [fetchNoteAsync.pending]: (state,action) => {
+      state.push({...action.payload, loading: true})
+    },
     [fetchNoteAsync.fulfilled]: (state, action) => action.payload.notes,
     [addNoteAsync.fulfilled]: (state, action) => {
-      state.push(action.payload);
+      state.push({...action.payload, loading: false});
     },
     [deleteNoteAsync.fulfilled]: (state, action) => {
       return state.filter((note) => note.id !== action.payload.id);

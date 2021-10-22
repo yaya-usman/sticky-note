@@ -4,6 +4,7 @@ import AddCircleIcon from "@mui/icons-material/AddCircle";
 import CancelIcon from "@mui/icons-material/Cancel";
 import { addNoteAsync, deleteNoteAsync } from "../redux/features/noteSlice";
 import { useDispatch, useSelector } from "react-redux";
+import Spinner from "./Spinner";
 
 function Note() {
   const dispatch = useDispatch();
@@ -26,7 +27,7 @@ function Note() {
       noteText: noteText,
       rotate: Math.floor(Math.random() * 20),
       top: Math.floor(150 + Math.random() * 200),
-      left: Math.floor(300 + Math.random() * 150)
+      left: Math.floor(300 + Math.random() * 150),
     };
     dispatch(addNoteAsync(payload));
     setNoteText("");
@@ -59,13 +60,15 @@ function Note() {
       </form>
 
       {notes.map((note) => {
-        return (
+        return note.loading ? (
+          <Spinner />
+        ) : (
           <div
             className="note"
             style={{
               transform: `rotate(${note.rotate}deg)`,
               top: `${note.top}px`,
-              left: `${note.left}px`
+              left: `${note.left}px`,
             }}
             key={note.id}
             draggable="true"
