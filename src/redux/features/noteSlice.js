@@ -62,13 +62,8 @@ const noteSlice = createSlice({
     [fetchNoteAsync.pending]: (state,action) => {
       state.push({...action.payload, loading: true})
     },
-    [fetchNoteAsync.fulfilled]: (state, action) => {
-      state.push({...action.payload.notes, loading: false})
-      return action.payload.notes;
-    },
-    [addNoteAsync.pending]: (state,action) =>{
-      state.push({...action.payload, loading: true})
-    },
+    [fetchNoteAsync.fulfilled]: (state, action) => action.payload.notes,
+
     [addNoteAsync.fulfilled]: (state, action) => {
       state.push({...action.payload, loading: false});
     },
