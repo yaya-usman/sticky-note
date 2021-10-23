@@ -43,7 +43,7 @@ The following user stories was fulfilled;
 
 ### Links
 
-- Live Site URL: [Live view](https://sticky-note.vercel.app/)
+- Live Site URL: [Live view](https://sticky-note-ab09d.web.app/)
 
 ## My process
 
