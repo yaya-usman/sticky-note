@@ -20,8 +20,7 @@
 
 ### Description
 
-This is a simple web app that enables users to take short notes and pin it on the webpage, it has mostly all the functionality a traditional sticky note for study has, for instance it is able to dragged and dropped anywhere across the user's viewport.
-Users should be able to:
+This is a webapp which enable users to take short notes and pin it on their view screen, it has mostly all the functionality a traditional sticky note used for note taking has, for instance it can be dragged and dropped anywhere across the user's viewport.
 
 ### User Stories
 
@@ -37,9 +36,8 @@ The following user stories was fulfilled;
 
 ### Preview
 
-![](images/Screenshot-1.png)
-![](images/Screenshot-2.png)
-![](images/Screenshot-3.png)
+![note image](src/assets/sticky-note-screenshot.png)<br /> <hr />
+![note gif](src/assets/sticky-note.gif)
 
 ### Links
 
@@ -47,13 +45,14 @@ The following user stories was fulfilled;
 
 ## My process
 
-### Built with/Tech Used
+### Built with/Approach/Tech Used
 
 - HTML5
-- CSS
+- Vanilla CSS3
 - React
-- LocalStorage
-- vercel
+- Redux/Redux-toolkit
+- Firebase/Cloud Firestore (for real-time database)
+- Firebase Hosting (for deployment)
 - Desktop-first workflow
 
 ### Continued development
@@ -68,6 +67,6 @@ export const JustAnotherProject = () => {
 
 ## Author
 
-- LinkedIn - [Let's connect](http://www.linkedin.com/in/yaya-usman-adaiza-430964192)
-- Twitter - [I follow back](https://twitter.com/ylincoln222)
-- Website - [check back in few months time :)]()
+- LinkedIn - [Let's connect 🔗](http://www.linkedin.com/in/yaya-usman-adaiza-430964192)
+- Twitter - [Let's be tweep mutuals 🥰](https://twitter.com/y_usman007)
+- Website - [check back in few months time 🤤]()
