@@ -36,7 +36,6 @@ The following user stories was fulfilled;
 
 ### Preview
 
-![note image](src/assets/sticky-note-screenshot.png)<br /> <hr />
 ![note gif](src/assets/sticky-note.gif)
 
 ### Links
